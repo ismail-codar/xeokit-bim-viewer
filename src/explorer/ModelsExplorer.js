@@ -140,7 +140,7 @@ class ModelsExplorer extends Controller {
         for (let i = 0, len = modelsInfo.length; i < len; i++) {
             const modelInfo = modelsInfo[i];
             const modelId = modelInfo.id;
-            const checkBox = document.getElementById("" + modelId);
+            const checkBox = this._modelsElement.querySelector("#" +  modelId);
             const span = document.getElementById("span-" + modelId);
             checkBox.addEventListener("click", () => {
                 if (checkBox.checked) {
@@ -297,7 +297,7 @@ class ModelsExplorer extends Controller {
     _loadGeometry(modelId, modelInfo, json, done, error) {
 
         const modelLoaded = () => {
-            const checkbox = document.getElementById("" + modelId);
+            const checkbox = this._modelsElement.querySelector("#" +  modelId);
             checkbox.checked = true;
             this._numModelsLoaded++;
             this._unloadModelsButtonElement.classList.remove("disabled");
@@ -413,7 +413,7 @@ class ModelsExplorer extends Controller {
             return;
         }
         model.destroy();
-        const checkbox = document.getElementById("" + modelId);
+        const checkbox = this._modelsElement.querySelector("#" +  modelId);
         checkbox.checked = false;
         const span = document.getElementById("span-" + modelId);
         this._numModelsLoaded--;
